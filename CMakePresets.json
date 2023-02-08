@@ -1,0 +1,63 @@
+{
+	"version": 2,
+	"configurePresets": [
+		{
+			"name": "config-macosx",
+			"displayName": "config-macosx",
+			"description": "Configure MySQL on macOS",
+			"generator": "Unix Makefiles",
+			"binaryDir": "${sourceDir}/compile",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug",
+				"CMAKE_INSTALL_PREFIX": "${sourceDir}/local",
+				"ENABLE_DOWNLOADS": "ON",
+				"DOWNLOAD_ROOT": "${sourceDir}/third-party"
+			},
+			"environment": {
+				"CMAKE_INSTALL_PREFIX": "${sourceDir}/local",
+				"COMPILATION_COMMENT": "Homebrew",
+				"DEFAULT_CHARSET": "utf8mb4",
+				"DEFAULT_COLLATION": "utf8_unicode_ci",
+				"INSTALL_DOCDIR": "share/doc/mysql",
+				"INSTALL_INCLUDEDIR": "include/mysql",
+				"INSTALL_INFODIR": "share/info",
+				"INSTALL_MANDIR": "share/man",
+				"INSTALL_MYSQLSHAREDIR": "share/mysql",
+				"INSTALL_PLUGINDIR": "lib/plugin",
+				"MYSQL_DATADIR": "${sourceDir}/var/mysql",
+				"SYSCONFDIR": "${sourceDir}/etc",
+				"WITH_BOOST": "${sourceDir}/third-party",
+				"WITH_EDITLINE": "system",
+				"WITH_SSL": "/usr/local/Cellar/openssl@1.1/1.1.1q",
+				"WITH_NUMA": "OFF",
+				"WITH_UNIT_TESTS": "ON",
+				"WITH_EMBEDDED_SERVER": "ON",
+				"ENABLED_LOCAL_INFILE": "1",
+				"CMAKE_EXPORT_COMPILE_COMMANDS:BOOL": "TRUE",
+				"CMAKE_BUILD_TYPE:STRING": "Debug",
+				"CMAKE_C_COMPILER:FILEPATH": "/usr/bin/clang",
+				"CMAKE_CXX_COMPILER:FILEPATH": "/usr/bin/clang"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "build-macosx",
+			"displayName": "build-macosx",
+			"configurePreset": "config-macosx",
+			"jobs": 16,
+			"inheritConfigureEnvironment": true,
+			"targets": [
+				"all"
+			]
+		}
+	],
+	"testPresets": [
+		{
+			"name": "test-macosx",
+			"displayName": "test-macosx",
+			"description": "Test MySQL on macOS",
+			"configurePreset": "config-macosx"
+		}
+	]
+}

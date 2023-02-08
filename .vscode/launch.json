@@ -1,0 +1,25 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug",
+			"program": "${workspaceFolder}/compile/sql/mysqld",
+			"args": [
+				"--no-defaults",
+				"--debug=d:t:i:o,${workspaceFolder}/local/mysql.trace",
+				"--pid-file=${workspaceFolder}/local/var/mysqld.pid",
+				"--socket=${workspaceFolder}/local/var/mysql.sock",
+				"--general-log=ON",
+				"--general-log-file=${workspaceFolder}/local/var/log/mysql.log",
+				"--log-error=${workspaceFolder}/local/var/log/mysql.err"
+			],
+			"cwd": "${workspaceFolder}",
+			"preLaunchTask": "init"
+		}
+	]
+}

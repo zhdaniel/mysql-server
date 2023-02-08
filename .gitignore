@@ -3068,6 +3068,8 @@ packaging/solaris/postinstall-solaris
 client/mysql_install_db
 internal/tests/open_files_limit
 client/mysql_ssl_rsa_setup
+third-party/**
 
 # Allow
 !include/*/boost/geometry/*
+!third-party/.gitkeep
